@@ -102,6 +102,15 @@ def c2_line(player):
     elif player == 2:
         color = cross_color
     pygame.draw.line(screen,color,(15,15),(width-15,height-15),15)
+#rest function
+def reset():
+    global board, player, game_over
+    board = np.zeros((board_r, board_c))
+    player = 1
+    game_over = False
+    screen.fill(bg)
+    lines()
+reset()
 
 
 lines()
@@ -130,6 +139,9 @@ while True:
                         game_over=True
                     player=1
                 draw()
-       
+               #the rest key
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_RETURN:
+                reset()
 
     pygame.display.update()
